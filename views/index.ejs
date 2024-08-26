@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/style.css">
+    <title>Instatrend</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+
+            <div class="menu-cont">
+                <!-- Notification Icon/Button in your EJS file -->
+                <div id="notification-icon">
+                    <i class="fas fa-bell">O</i>
+                    <span id="notification-count"></span>
+                </div>
+
+                <!-- Notification Dropdown/Modal -->
+                <div id="notification-dropdown" style="display: none;">
+                    <ul id="notification-list">
+                        <!-- Notifications will be appended here -->
+                    </ul>
+                </div>
+
+                <h1 class="app-name">Instatrend</h1>
+                <div class="nav-btn">
+                    <ul>
+                        <li>X</li>
+                        <li>X</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="status">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="header-form-cont">
+                <form id="postForm" enctype="multipart/form-data">
+                    <label class="add-media-cont" for="image"><img src="/public/add-media.png" alt=""></label>
+                    <input type="file" id="image" name="media" accept="image/*">
+
+                    <input type="text" id="caption" name="caption" placeholder="what are you thinking...?" required>
+
+                    <button type="submit"><img src="/public/send-btn.png" alt=""></button>
+                </form>
+            </div>
+        </div>
+        <div class="content-cont">
+            <% posts.forEach(post=> { %>
+                <div class="card">
+                    <% if (post.user) { %> <!-- Check if post.user is populated -->
+                        <div class="post-profile-cont">
+                            <div class="post-profile-sub-cont">
+                                <div class="profile-pic-cont">
+                                </div>
+                                <a href="/<%= post.user.username %>/">
+                                    <p>@<%= post.user.username %>
+                                    </p>
+                                </a>
+                                <% const isFollowing=(post.user && post.user.followers && post.user.followers.map(f=>
+                                    f.toString()).includes(userId)); %>
+                                    <form id="follow-unfollow-form-<%= post.user ? post.user._id : '' %>"
+                                        action="/follow/<%= post.user ? post.user._id : '' %>" method="PUT">
+                                        <% if (post.user && post.user._id.toString() !==userId) { %>
+                                            <button type="button"
+                                                id="<%= isFollowing ? 'unfollow-button-' : 'follow-button-' %><%= post.user._id %>">
+                                                <%= isFollowing ? 'Unfollow' : 'Follow' %>
+                                            </button>
+                                            <% } %>
+                                    </form>
+                            </div>
+
+                            <div class="ellipse-btn-cont">
+
+                                <% if (post.user._id.toString()===userId) { %>
+                                    <form id="delete-post-form-<%= post._id %>"
+                                        action="/api/posts/posts/<%= post._id %>" method="POST">
+                                        <button type="button" id="delete-post-button-<%= post._id %>">Delete</button>
+                                    </form>
+                                    <% } %>
+                            </div>
+
+                        </div>
+                        <% } %>
+
+                            <% if (post.imageUrl) { %>
+                                <div class="post-media-cont">
+                                    <img src="<%= post.imageUrl %>" alt="<%= post.caption %>">
+                                </div>
+                                <% } else { %>
+
+                                    <video width="320" height="240" controls>
+                                        <source src="<%= post.video %>" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <% } %>
+
+                                        <div class="card-body">
+                                            <form id="like-form-<%= post._id %>"
+                                                action="/api/posts/<%= post._id %>/like" method="POST">
+                                                <% const likedByCurrentUser=post.likes.map(like=>
+                                                    like._id.toString()).includes(userId); %>
+                                                    <button type="button" id="like-button-<%= post._id %>">
+                                                        <%= likedByCurrentUser ? 'Unlike' : 'Like' %>
+                                                    </button>
+                                                    (<span id="like-count-<%= post._id %>">
+                                                        <%= post.likes.length %>
+                                                    </span>)
+                                            </form>
+
+                                            <p class="card-title">
+                                                <strong>
+                                                    <%= post.user.username %>
+                                                </strong>
+                                                <%= post.caption %>
+                                            </p>
+
+                                            <form action="/api/posts/<%= post._id %>/comment" method="POST">
+                                                <input type="text" name="comment" placeholder="Add a comment" required>
+                                                <button type="submit">Comment</button>
+                                            </form>
+
+                                            <button type="button" class="comments-button"
+                                                data-post-id="<%= post._id %>">View Comments</button>
+
+
+                                            <div style="display: none;">
+
+                                                <h6>Comments</h6>
+                                                <ul class="list-group">
+                                                    <% post.comments.forEach(comment=> { %>
+                                                        <li class="list-group-item">
+                                                            <strong>
+                                                                <%= comment.user.username %>:
+                                                            </strong>
+                                                            <%= comment.text %>
+                                                        </li>
+                                                        <% }) %>
+                                                </ul>
+                                            </div>
+                                        </div>
+                </div>
+                <% }) %>
+        </div>
+    </div>
+
+    <div class="footer-menu">
+        <div>O</div>
+        <div>O</div>
+        <div>O</div>
+    </div>
+
+    <div id="comment-backdrop" class="comment-backdrop"></div>
+    <div id="comments-dialog" class="comments-dialog-cont">
+        <div class="comments-top-cont">
+            <p>Comments</p>
+        </div>
+        <div class="sub-comments-dialog-cont">
+            <div id="comments-content" class="comments-content-cont">
+
+            </div>
+            <!-- <button id="close-dialog-button">CX</button> -->
+
+        </div>
+        <div class="comment-bottom-cont">
+            <div class="active-user-pp-cont">
+                <!-- <img src="" alt="O"> -->
+                <label for="">O</label>
+            </div>
+            <div class="comment-input-cont">
+                <input id="new-comment" placeholder="Add a comment...">
+            </div>
+            <div class="send-btn-cont">
+                <button id="post-comment-button">
+                    <img src="/public/send-btn.png" alt="">
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        const currentUser = "<%= userId %>"
+    </script>
+
+    <script src="/public/controllers/controller1.js"></script>
+
+
+</body>
+
+</html>

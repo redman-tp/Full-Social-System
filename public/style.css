@@ -1,0 +1,406 @@
+* {
+  box-sizing: border-box;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  flex-shrink: 0;
+}
+*::-webkit-scrollbar {
+  display: none;
+}
+body {
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  width: 100%;
+  margin: auto;
+  box-sizing: content-box;
+}
+
+.card {
+  background: #fff;
+  box-shadow: 0 0 20px rgba(172, 172, 172, 0.2);
+  width: 98%;
+  height: auto;
+  margin: 20px auto;
+  border-radius: 25px;
+  overflow: hidden;
+}
+
+.card:last-of-type {
+  margin-bottom: 100px;
+}
+
+.header {
+  /* background-color: red; */
+  width: 100%;
+}
+
+.header .status {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 10px;
+}
+
+.header .menu-cont {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5px 0 20px;
+  height: 60px;
+  margin-bottom: 20px;
+  background: white;
+  width: 100%;
+  box-shadow: 0 0 20px rgba(172, 172, 172, 0.5);
+}
+
+.header .menu-cont .nav-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 110px;
+  height: 100%;
+}
+
+.header .menu-cont .nav-btn > ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style-type: none;
+  width: 100%;
+  height: 100%;
+}
+
+.header .menu-cont .nav-btn > ul > li {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 100px;
+  background: white;
+  box-shadow: 0 0 20px rgba(127, 127, 127, 0.2);
+}
+
+.header .status > div {
+  width: 90px;
+  height: 110px;
+  flex-shrink: 0;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(127, 127, 127, 0.2);
+}
+
+.header .header-form-cont {
+  height: 70px;
+  background: white;
+  box-shadow: 0 0 20px rgba(127, 127, 127, 0.3);
+  margin-top: 20px;
+}
+
+.header .header-form-cont > form {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.header * {
+  flex-shrink: 0;
+}
+
+.header .header-form-cont form > input[type="text"] {
+  width: 65%;
+  height: 70%;
+  display: block;
+  border-radius: 100px;
+  border: none;
+  background-color: white;
+  padding: 20px;
+  outline: none;
+  box-shadow: 0 0 20px rgba(127, 127, 127, 0.11);
+}
+
+.header .header-form-cont form > label[for="caption"] {
+  position: absolute;
+}
+
+.header .header-form-cont form > input[type="file"] {
+  width: 0px;
+  display: none;
+}
+
+.header .header-form-cont form > label[for="image"] {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+}
+
+.header .header-form-cont form > label[for="image"] > img {
+  width: 90%;
+  height: 90%;
+}
+
+.header .header-form-cont form > button[type="submit"] {
+  width: 40px;
+  height: 40px;
+  border-radius: 100px;
+  border: none;
+  overflow: hidden;
+  padding: 11px;
+}
+
+.header .header-form-cont form > button[type="submit"] > img {
+  width: 100%;
+  height: 100%;
+  margin-top: 2px;
+}
+
+.card .post-profile-cont {
+  background-color: white;
+  display: flex;
+  height: 60px;
+  width: 100%;
+  justify-content: space-between;
+  padding: 0 10px;
+  align-items: center;
+}
+.card .post-profile-cont .profile-pic-cont {
+  height: 40px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.219);
+  width: 40px;
+  border-radius: 100%;
+}
+.card .post-profile-cont .post-profile-sub-cont {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 60%;
+  height: 100%;
+}
+.post-media-cont {
+  width: 100%;
+  max-height: 500px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 10px;
+}
+
+.card h5 {
+  margin: 0 0 10px;
+}
+
+.card p {
+  margin: 0 0 10px;
+}
+
+.list-group {
+  list-style: none;
+  padding: 0;
+}
+
+.list-group-item {
+  padding: 10px;
+  border: #ccc 1px solid;
+  border-radius: 3px;
+  margin-bottom: 5px;
+  background: #f9f9f9;
+}
+
+.footer-menu {
+  width: 100%;
+  height: 65px;
+  border-radius: 50px 50px 0 0;
+  background: white;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 9;
+  box-shadow: 0 0 20px rgb(196, 196, 196);
+}
+
+.footer-menu > div {
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  background-color: white;
+  box-shadow: 0 0 20px rgba(127, 127, 127, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: larger;
+  font-weight: bolder;
+  color: white;
+  text-shadow: 0 0 10px rgba(195, 9, 9, 0.65);
+}
+
+/* Comment dialog */
+
+.comments-dialog-cont {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 60svh;
+  background-color: white;
+  bottom: 0;
+  left: 0;
+  z-index: 20;
+}
+.comment-backdrop {
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(172, 172, 172, 0.4);
+}
+.comments-dialog-cont .sub-comments-dialog-cont {
+  background-color: white;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+.comments-content-cont {
+  padding: 10px;
+  width: 100%;
+  height: auto;
+  min-height: 30%;
+}
+.comments-content-cont > div {
+  background-color: white;
+  padding: 10px;
+  display: flex;
+  border-radius: 25px;
+  margin-bottom: 10px;
+  box-shadow: 0 0 20px rgba(127, 127, 127, 0.2);
+}
+.comments-content-cont > div:last-of-type {
+  margin-bottom: 130px;
+}
+.comments-content-cont > div > div:last-of-type {
+  margin: 0px 0 0 10px;
+  flex-shrink: 1;
+}
+.comments-content-cont > div > div:last-of-type > p:first-of-type {
+  margin-bottom: 3px;
+  font-weight: bold;
+}
+.comments-content-cont > div > div:last-of-type > p:last-of-type {
+  padding: 0 5px 5px 5px;
+}
+.comments-content-cont > div > div:first-of-type {
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.comments-content-cont > div > div:first-of-type::after {
+  display: flex;
+  content: "O";
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  outline: 2px solid rgb(152, 18, 157);
+  font-weight: bolder;
+  font-size: 1.4em;
+  border-radius: 100%;
+  text-shadow: 0 0 10px rgba(195, 9, 9, 0.65);
+}
+.comments-dialog-cont .comment-bottom-cont {
+  background-color: #fff;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  height: 70px;
+  box-shadow: 0 0 20px rgba(127, 127, 127, 0.2);
+}
+.comments-dialog-cont .comment-bottom-cont > div {
+  margin: 5px;
+}
+.comments-dialog-cont .comment-bottom-cont .active-user-pp-cont {
+  background-color: white;
+  width: 50px;
+  height: 50px;
+  border: 2px solid rgb(104, 9, 51);
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-shadow: 0 0 10px rgba(130, 18, 76, 0.65);
+  font-size: 1.4em;
+  color: white;
+}
+.comments-dialog-cont .comment-bottom-cont .comment-input-cont {
+  height: 50px;
+  flex-grow: 1;
+}
+.comments-dialog-cont .comment-bottom-cont .comment-input-cont > input {
+  width: 100%;
+  height: 100%;
+  border-radius: 50px;
+  border: none;
+  outline: none;
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(127, 127, 127, 0.2);
+}
+.comments-dialog-cont .comment-bottom-cont .send-btn-cont button {
+  width: 40px;
+  height: 40px;
+  border-radius: 100px;
+  border: none;
+  overflow: hidden;
+  background: white;
+  padding: 11px;
+  box-shadow: 0 0 20px rgba(127, 127, 127, 0.2);
+}
+.comments-dialog-cont .comment-bottom-cont .send-btn-cont button img {
+  width: 100%;
+  height: 100%;
+  margin-top: 2px;
+}
+.comments-dialog-cont .comments-top-cont {
+  width: 100%;
+  height: 60px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 20px rgba(91, 91, 91, 0.2);
+}
+.comments-dialog-cont .comments-top-cont > p {
+  font-weight: bold;
+}

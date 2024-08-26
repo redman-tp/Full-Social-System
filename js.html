@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="comments-content"></div>
+    <script>
+        const commentsContent = document.getElementById('comments-content')
+
+
+        const commentWrapper = document.createElement('div')
+        const commentPpCont = document.createElement('div')
+        const commentUserPpContent = document.createElement('div')
+        const commentUserName = document.createElement('p')
+        const UserComment = document.createElement('p')
+
+        commentUserName.textContent = "Redman"
+        UserComment.textContent = "this is is is is is is is is is is is i si sis is is is is is si is is is is is is is " +
+            "isthieth ietheit iehtiet iekhtie tieieiei eie ei eie ie ie ie ie ierie eirhei"
+        commentUserPpContent.appendChild(commentUserName)
+        commentUserPpContent.appendChild(UserComment)
+        commentWrapper.appendChild(commentPpCont)
+        commentWrapper.appendChild(commentUserPpContent)
+        commentsContent.appendChild(commentWrapper)
+
+    </script>
+</body>
+
+</html>
