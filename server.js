@@ -9,6 +9,7 @@ const socketIo = require('socket.io');  // Import socket.io
 const userRoutes = require('./routes/users');
 const postRoutes = require('./routes/posts');
 const Post = require('./models/Post');
+const User = require("./models/User")
 const authenticate = require("./middleware/authenticate");
 
 const app = express();
@@ -29,7 +30,7 @@ app.set('view engine', 'ejs');
 
 // MongoDB Connection (same as before)
 const dbURI = 'mongodb://localhost:27017/users';
-mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, serverSelectionTimeoutMS: 30000 })
     .then(() => console.log('Connected to MongoDB'))
     .catch(err => console.log(err));
 
@@ -55,16 +56,20 @@ app.get('/test-image', (req, res) => {
     res.render('test-image');
 });
 
-app.get('/', authenticate, async (req, res) => {
-    console.log(req);
-    
+app.get('/', authenticate, async (req, res) => {    
     try {
+        let currentUserName = await User.findById(req.userId).select('username')
+        console.log(currentUserName);
+        
         const posts = await Post.find()
-            .populate('user', 'firstname lastname othernames username followers')
-            .populate('comments.user', 'firstname lastname othernames username')
-            .populate('likes', 'firstname lastname othernames username');
+        .populate('user', 'firstname lastname othernames username followers')
+        .populate('comments.user', 'firstname lastname othernames username')
+        .populate('likes', 'firstname lastname othernames username');
+        
 
-        res.render('index', { posts, userId: req.userId });
+        res.render('index', { posts, userId: req.userId, currentUserName: currentUserName.username });
+    
+        
     } catch (err) {
         res.status(500).send({ success: false, message: err.message });
     }

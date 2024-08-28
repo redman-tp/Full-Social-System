@@ -4,7 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+PE:wght@100..400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/public/style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
+        integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
     <title>Instatrend</title>
     <style>
 
@@ -13,42 +18,83 @@
 
 <body>
     <div class="container">
+        <!-- Notification Icon/Button in your EJS file -->
+        <!-- <div>
+            <i class="fas fa-bell">Oooo</i>
+            <span id="notification-count"></span>
+        </div> -->
+
+        <!-- Notification Dropdown/Modal -->
+        <div id="notification-dropdown" class="notification-cont" style="display: block;">
+            <div>
+                <?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+                <svg id="close-notif" width="30px" height="30px" viewBox="0 0 24 24" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M11 9L8 12M8 12L11 15M8 12H16M7.2 20H16.8C17.9201 20 18.4802 20 18.908 19.782C19.2843 19.5903 19.5903 19.2843 19.782 18.908C20 18.4802 20 17.9201 20 16.8V7.2C20 6.0799 20 5.51984 19.782 5.09202C19.5903 4.71569 19.2843 4.40973 18.908 4.21799C18.4802 4 17.9201 4 16.8 4H7.2C6.0799 4 5.51984 4 5.09202 4.21799C4.71569 4.40973 4.40973 4.71569 4.21799 5.09202C4 5.51984 4 6.07989 4 7.2V16.8C4 17.9201 4 18.4802 4.21799 18.908C4.40973 19.2843 4.71569 19.5903 5.09202 19.782C5.51984 20 6.07989 20 7.2 20Z"
+                        stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                <span>Notifications</span>
+            </div>
+            <div id="notification-list">
+                <!-- Notifications will be appended here -->
+            </div>
+        </div>
         <div class="header">
-
             <div class="menu-cont">
-                <!-- Notification Icon/Button in your EJS file -->
-                <div id="notification-icon">
-                    <i class="fas fa-bell">O</i>
-                    <span id="notification-count"></span>
-                </div>
+                <a href="/">
+                    <h1 class="app-name">Instatrend</h1>
+                </a>
 
-                <!-- Notification Dropdown/Modal -->
-                <div id="notification-dropdown" style="display: none;">
-                    <ul id="notification-list">
-                        <!-- Notifications will be appended here -->
-                    </ul>
-                </div>
-
-                <h1 class="app-name">Instatrend</h1>
                 <div class="nav-btn">
                     <ul>
-                        <li>X</li>
-                        <li>X</li>
+                        <li id="notification-icon">
+                            <?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+                            <svg width="65%" height="65%" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z"
+                                    fill="#1C274C" />
+                            </svg>
+                        </li>
+                        <li>
+                            <?xml version="1.0" encoding="UTF-8"?>
+                            <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+                            <svg width="65%" height="65%" viewBox="0 0 24 24" version="1.1"
+                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+                                <title>messanger</title>
+                                <desc>Created with sketchtool.</desc>
+                                <g id="brand" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <g id="messanger" fill="#1C274C">
+                                        <path
+                                            d="M12.9419305,14.4132711 L10.3816186,11.7534625 L5.45094503,14.4802487 L10.8567589,8.74367787 L13.4170708,11.4034864 L18.3477192,8.67670029 L12.9419305,14.4132711 Z M11.8993321,2 C6.43210743,2 2,6.14444891 2,11.2568612 C2,14.1651845 3.43438829,16.7602069 5.67764614,18.457241 L5.67764614,22 L9.05594606,20.1261138 C9.95655399,20.3782306 10.911016,20.5137223 11.8993321,20.5137223 C17.366582,20.5137223 21.7986642,16.3692734 21.7986642,11.2568612 C21.7986642,6.14444891 17.366582,2 11.8993321,2 L11.8993321,2 Z"
+                                            id="Shape">
+
+                                        </path>
+                                    </g>
+                                </g>
+                            </svg>
+                        </li>
                     </ul>
                 </div>
             </div>
             <div class="status">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
+                <% posts.forEach(post=> { %>
+
+                    <% if (post.user) { %>
+                        <% if (post.imageUrl) { %>
+                            <div>
+                                <img src="<%= post.imageUrl %>" alt="<%= post.caption %>">
+                            </div>
+                            <% } %>
+                                <% } %>
+                                    <% }) %>
             </div>
             <div class="header-form-cont">
                 <form id="postForm" enctype="multipart/form-data">
-                    <label class="add-media-cont" for="image"><img src="/public/add-media.png" alt=""></label>
                     <input type="file" id="image" name="media" accept="image/*">
+                    <label class="add-media-cont" for="image"><img src="/public/add-media.png" alt=""></label>
 
                     <input type="text" id="caption" name="caption" placeholder="what are you thinking...?" required>
 
@@ -62,7 +108,9 @@
                     <% if (post.user) { %> <!-- Check if post.user is populated -->
                         <div class="post-profile-cont">
                             <div class="post-profile-sub-cont">
+
                                 <div class="profile-pic-cont">
+                                    <%= post.user.username.charAt(0) %>
                                 </div>
                                 <a href="/<%= post.user.username %>/">
                                     <p>@<%= post.user.username %>
@@ -82,13 +130,15 @@
                             </div>
 
                             <div class="ellipse-btn-cont">
-
-                                <% if (post.user._id.toString()===userId) { %>
-                                    <form id="delete-post-form-<%= post._id %>"
-                                        action="/api/posts/posts/<%= post._id %>" method="POST">
-                                        <button type="button" id="delete-post-button-<%= post._id %>">Delete</button>
-                                    </form>
-                                    <% } %>
+                                <form id="delete-post-form-<%= post._id %>" action="/api/posts/posts/<%= post._id %>"
+                                    method="POST">
+                                    <button usermatch="<%= post.user._id.toString()===userId %>" class="ellipses"
+                                        type="button" id="delete-post-button-<%= post._id %>">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </button>
+                                </form>
                             </div>
 
                         </div>
@@ -111,28 +161,39 @@
                                                 action="/api/posts/<%= post._id %>/like" method="POST">
                                                 <% const likedByCurrentUser=post.likes.map(like=>
                                                     like._id.toString()).includes(userId); %>
-                                                    <button type="button" id="like-button-<%= post._id %>">
-                                                        <%= likedByCurrentUser ? 'Unlike' : 'Like' %>
-                                                    </button>
-                                                    (<span id="like-count-<%= post._id %>">
-                                                        <%= post.likes.length %>
-                                                    </span>)
+
+                                                    <div class="placement">
+                                                        <button class="<%= likedByCurrentUser ? 'btn fill' : 'btn' %>"
+                                                            type="button" id="like-button-<%= post._id %>">
+                                                            <svg class="icon" width="30" height="30" viewBox="0 0 24 24"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <path
+                                                                    d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
+                                                                </path>
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                    <span class="like-count" id="like-count-<%= post._id %>">
+                                                        <%= post.likes.length + " likes" %>
+                                                    </span>
+                                                    <p class="card-title">
+                                                        <strong>
+                                                            <%= post.user.username %>
+                                                        </strong>
+                                                        <%= post.caption %>
+                                                    </p>
+                                                    <span class="comments-button" data-post-id="<%= post._id %>">View
+                                                        comments</span>
                                             </form>
 
-                                            <p class="card-title">
-                                                <strong>
-                                                    <%= post.user.username %>
-                                                </strong>
-                                                <%= post.caption %>
-                                            </p>
 
-                                            <form action="/api/posts/<%= post._id %>/comment" method="POST">
+                                            <form class="quick-comment" action="/api/posts/<%= post._id %>/comment"
+                                                method="POST">
                                                 <input type="text" name="comment" placeholder="Add a comment" required>
-                                                <button type="submit">Comment</button>
+                                                <button type="submit"><img src="/public/send-btn.png" alt=""></button>
                                             </form>
 
-                                            <button type="button" class="comments-button"
-                                                data-post-id="<%= post._id %>">View Comments</button>
+
 
 
                                             <div style="display: none;">
@@ -156,9 +217,35 @@
     </div>
 
     <div class="footer-menu">
-        <div>O</div>
-        <div>O</div>
-        <div>O</div>
+        <div class="button-container">
+            <a href="/">
+                <button class="button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 1024 1024"
+                        stroke-width="0" fill="#1C274C" stroke="#1C274C" class="icon">
+                        <path
+                            d="M946.5 505L560.1 118.8l-25.9-25.9a31.5 31.5 0 0 0-44.4 0L77.5 505a63.9 63.9 0 0 0-18.8 46c.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8a63.6 63.6 0 0 0 18.7-45.3c0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204zm217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z">
+                        </path>
+                    </svg>
+                </button>
+            </a>
+            <button class="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" aria-hidden="true"
+                    viewBox="0 0 24 24" stroke-width="2" fill="white" stroke="#1C274C" class="icon">
+                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linejoin="round"
+                        stroke-linecap="round"></path>
+                </svg>
+            </button>
+            <a href="/<%= currentUserName %>">
+                <button class="button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24"
+                        stroke-width="0" fill="#1C274C" stroke="#1C274C" class="icon">
+                        <path
+                            d="M12 2.5a5.5 5.5 0 0 1 3.096 10.047 9.005 9.005 0 0 1 5.9 8.181.75.75 0 1 1-1.499.044 7.5 7.5 0 0 0-14.993 0 .75.75 0 0 1-1.5-.045 9.005 9.005 0 0 1 5.9-8.18A5.5 5.5 0 0 1 12 2.5ZM8 8a4 4 0 1 0 8 0 4 4 0 0 0-8 0Z">
+                        </path>
+                    </svg>
+                </button>
+            </a>
+        </div>
     </div>
 
     <div id="comment-backdrop" class="comment-backdrop"></div>
@@ -187,14 +274,29 @@
                 </button>
             </div>
         </div>
+
     </div>
-
-
+    <div class="confirmDelete-cont" id="confirmDelete">
+        <div></div>
+        <div>
+            <button class="delBtn" onclick="deletePost()">Delete</button>
+            <button class="delBtn" onclick="cancelDelete()">Cancel</button>
+        </div>
+    </div>
     <script>
-        const currentUser = "<%= userId %>"
+
+    </script>
+    <script>
+        const currentUserId = "<%= userId %>"
+        const currentUserName = "<%= currentUserName %>"
+        console.log(currentUserName);
+
+
     </script>
 
     <script src="/public/controllers/controller1.js"></script>
+
+
 
 
 </body>

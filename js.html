@@ -5,30 +5,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+    <style>
+ .heart {
+  width: 100px;
+  height: 100px;
+  background: url("https://cssanimation.rocks/images/posts/steps/heart.png") no-repeat;
+  background-position: 0 0;
+  cursor: pointer;
+  transition: background-position 1s steps(28);
+  transition-duration: 0s;
+  
+  &.is-active {
+    transition-duration: 1s;
+    background-position: -2800px 0;
+  }
+}
+
+body {
+  background: #000000;
+}
+
+.placement {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+    </style>
 </head>
 
 <body>
-    <div id="comments-content"></div>
-    <script>
-        const commentsContent = document.getElementById('comments-content')
+    
 
-
-        const commentWrapper = document.createElement('div')
-        const commentPpCont = document.createElement('div')
-        const commentUserPpContent = document.createElement('div')
-        const commentUserName = document.createElement('p')
-        const UserComment = document.createElement('p')
-
-        commentUserName.textContent = "Redman"
-        UserComment.textContent = "this is is is is is is is is is is is i si sis is is is is is si is is is is is is is " +
-            "isthieth ietheit iehtiet iekhtie tieieiei eie ei eie ie ie ie ie ierie eirhei"
-        commentUserPpContent.appendChild(commentUserName)
-        commentUserPpContent.appendChild(UserComment)
-        commentWrapper.appendChild(commentPpCont)
-        commentWrapper.appendChild(commentUserPpContent)
-        commentsContent.appendChild(commentWrapper)
-
-    </script>
+    <div class="placement">
+        <div class="heart"></div>
+      </div>
+      <script>
+  $(function() {
+  $(".heart").on("click", function() {
+    $(this).toggleClass("is-active");
+  });
+});
+      </script>
 </body>
 
 </html>

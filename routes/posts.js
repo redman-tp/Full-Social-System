@@ -18,7 +18,7 @@ const storage = multer.diskStorage({
 })
 
 function checkFileType(file, cb) {
-  const filetypes = /jpeg|jgp|png|gif/
+  const filetypes = /jpeg|jpg|png|gif/
   const extname = filetypes.test(path.extname(file.originalname).toLowerCase())
   const mimetype = filetypes.test(file.mimetype)
 
@@ -219,8 +219,10 @@ router.delete('/posts/:id', authenticate, async (req, res) => {
           return res.status(403).send({ success: false, message: 'Unauthorized' });
       }
 
-      await post.remove();
-
+      console.log(post);
+      
+      await Post.deleteOne({ _id: req.params.id });
+      
       res.status(200).send({ success: true, message: 'Post deleted successfully' });
   } catch (err) {
       res.status(500).send({ success: false, message: err.message });
